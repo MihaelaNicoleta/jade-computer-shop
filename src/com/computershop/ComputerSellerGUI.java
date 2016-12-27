@@ -10,8 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.EventQueue;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.AbstractTableModel;
 
 public class ComputerSellerGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -32,9 +30,9 @@ public class ComputerSellerGUI extends JFrame{
 	private JTextField cpuField, gpuField, ramField, memoryField, ssdField, stockField, priceField;
 	
 	
-	ComputerSellerGUI(ComputerSellerAgent sellerAgent) {
-		super(sellerAgent.getLocalName());		
-		this.sellerAgent = sellerAgent;
+	ComputerSellerGUI(ComputerSellerAgent computerSellerAgent) {
+		super(computerSellerAgent.getLocalName());		
+		this.sellerAgent = computerSellerAgent;
 		
 		/* Add GUI elements */
 		JPanel jPanel = new JPanel(new GridBagLayout());
@@ -148,6 +146,7 @@ public class ComputerSellerGUI extends JFrame{
 					computer.setStock(stock);
 					
 					sellerAgent.addComputer(computer);
+					computerTableModel.addComputer(computer);
 					
 				}
 				catch (Exception e) {
@@ -186,20 +185,47 @@ public class ComputerSellerGUI extends JFrame{
 		setResizable(true);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void show() { 
-		
+		pack();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int centerX = (int)screenSize.getWidth() / 2;
+		int centerY = (int)screenSize.getHeight() / 2;
+		setLocation(centerX - getWidth() / 2, centerY - getHeight() / 2);
+		super.show();
 	}	
 	
 	public void addComputer(final Computer computer) { 
-		
+		EventQueue.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				computerTableModel.addComputer(computer);
+			}
+			
+		});
 	}
 	
 	public void incrementSalesAndDecreaseStockForComputer(final String cpuType, final int ramCapacity, final int memCapacity, final int price) {
-		
+		EventQueue.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				computerTableModel.incrementSalesAndDecreaseStockForComputer(cpuType, ramCapacity, memCapacity, price);
+			}
+			
+		});
 	}
 	
 	public void incrementRefusalsForComputer(final String cpuType, final int ramCapacity, final int memCapacity, final int price) {
-		
+		EventQueue.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				computerTableModel.incrementRefusalsForComputer(cpuType, ramCapacity, memCapacity, price);
+			}
+			
+		});
 	}
 	
 	
