@@ -28,7 +28,7 @@ public class Computer {
 	public void setRamCapacity(int ramCapacity) {
 		this.ramCapacity = ramCapacity;
 	}
-	public boolean isHasSSD() {
+	public boolean getHasSSD() {
 		return hasSSD;
 	}
 	public void setHasSSD(boolean hasSSD) {
