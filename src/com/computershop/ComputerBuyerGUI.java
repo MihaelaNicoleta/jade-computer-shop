@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.EventQueue;
+import java.awt.GridBagLayout;
 
 
 public class ComputerBuyerGUI extends JFrame{
@@ -39,12 +40,23 @@ public class ComputerBuyerGUI extends JFrame{
 		
 		buyerAgent = agent;
 		
-		JPanel panel = new JPanel(new GridLayout());
-		JTextField cpuTxtF = new JTextField();
-		JTextField ramTxtF = new JTextField();
-		JTextField memTxtF = new JTextField();
-		JTextField isSSDTxtF = new JTextField();
-		JTextField gpuTxtF = new JTextField();
+		JPanel panel = new JPanel(new GridBagLayout());
+		JTextField cpuTxtF = new JTextField(15);
+		JTextField ramTxtF = new JTextField(5);
+		JTextField memTxtF = new JTextField(5);
+		JTextField priceTxtF = new JTextField(7);
+		
+		panel.add(new JLabel("Processor"));
+		panel.add(cpuTxtF);
+		
+		panel.add(new JLabel("RAM capacity (GB)"));
+		panel.add(ramTxtF);
+		
+		panel.add(new JLabel("Memory (GB)"));
+		panel.add(memTxtF);
+		
+		panel.add(new JLabel("Max Price"));
+		panel.add(priceTxtF);
 		
 		searchButton = new JButton("Search");
 		searchButton.addActionListener(new ActionListener()
@@ -60,8 +72,10 @@ public class ComputerBuyerGUI extends JFrame{
 				sellerLabels.clear();
 				sellerChxBx.clear();
 				pack();
-				//TODO:
-				//buyerAgent.startCFP(searchCpuType, searchRamCap, searchMemCap, price);
+				buyerAgent.startCFP(cpuTxtF.getText(), 
+						Integer.parseInt(ramTxtF.getText()), 
+						Integer.parseInt(memTxtF.getText()),
+						Integer.parseInt( priceTxtF.getText()));
 			}
 		});
 		panel.add(searchButton);
@@ -99,40 +113,22 @@ public class ComputerBuyerGUI extends JFrame{
 			}
 
 			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowActivated(WindowEvent e) {			}
 
 			@Override
-			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowClosed(WindowEvent e) {}
 
 			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowDeactivated(WindowEvent e) {}
 
 			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowDeiconified(WindowEvent e) {}
 
 			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowIconified(WindowEvent e) {}
 
 			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void windowOpened(WindowEvent e) {}
 			
 		});
 		
@@ -150,7 +146,7 @@ public class ComputerBuyerGUI extends JFrame{
 		super.show();
 	}
 	
-	protected void initProposals() 
+	private void initProposals() 
 	{
 		proposalsPanel.add(new JLabel("Seller Name"));
 		proposalsPanel.add(new JLabel("Seller Price"));

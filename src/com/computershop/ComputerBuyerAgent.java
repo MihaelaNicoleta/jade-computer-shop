@@ -18,7 +18,7 @@ public class ComputerBuyerAgent extends Agent
 {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String CONV_SELL_ID = "PC_SELLING";
+	private static final String CONV_SELL_ID = "Computer-Selling";
 	
 	private String targetCpu;
 	private int targetRamCap;
@@ -39,7 +39,7 @@ public class ComputerBuyerAgent extends Agent
 	{
 		private static final long serialVersionUID = 1L;
 		
-		private static final String CONV_TRADE_ID = "PC_TRADE";
+		private static final String CONV_TRADE_ID = "JADE-Computer-Trading";
 		
 		private int repliesCount = 0;
 		private int acceptanceCount = 0;
@@ -76,7 +76,7 @@ public class ComputerBuyerAgent extends Agent
 				}
 				break; // end of RequestAllSellerOffers
 				
-				case ReceiveOffers:
+				case ReceiveOffers://1
 				{
 					reply = thisAgent.receive(msgTempl);
 					
@@ -237,11 +237,10 @@ public class ComputerBuyerAgent extends Agent
 			
 			@Override
 			public void action() {
-				// TODO Auto-generated method stub
 				targetCpu = searchCpuType;
 				targetRamCap = searchRamCap;
 				targetMemCap = searchMemCap;
-				accepted  = new HashMap();
+				accepted  = new HashMap<String, Boolean>();
 				proposalsList = new ArrayList<>();
 				priceList = new ArrayList<>();
 				finished = false;
