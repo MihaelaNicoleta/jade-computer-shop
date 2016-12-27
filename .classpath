@@ -9,5 +9,12 @@
 	<classpathentry kind="lib" path="F:/Faculta/An 4/Procesare orientata agent/jade lib/it.fbk.sra.ejade_0.8.0/lib/libjade/jade.jar"/>
 	<classpathentry kind="lib" path="F:/Faculta/An 4/Procesare orientata agent/jade lib/it.fbk.sra.ejade_0.8.0/lib/libjade/jadeTools.jar"/>
 	<classpathentry kind="lib" path="F:/Faculta/An 4/Procesare orientata agent/jade lib/it.fbk.sra.ejade_0.8.0/lib/libjade/jadex_jadeadapter.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/crimson.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/http.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/iiop.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/jade.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/jadeTools.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/it.fbk.sra.ejade_0.8.0/lib/libjade/jadex_jadeadapter.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
