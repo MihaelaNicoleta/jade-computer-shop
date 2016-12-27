@@ -65,7 +65,7 @@ public class ComputerBuyerAgent extends Agent
 						cfpMsg.addReceiver(sellerAgents[i]);
 					}
 					cfpMsg.setContent(search);
-					cfpMsg.setContent(CONV_TRADE_ID);
+					cfpMsg.setConversationId(CONV_TRADE_ID);
 					cfpMsg.setReplyWith("cpf" + System.currentTimeMillis());
 					thisAgent.send(cfpMsg);
 					
