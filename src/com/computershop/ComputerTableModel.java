@@ -21,8 +21,9 @@ public class ComputerTableModel extends AbstractTableModel {
 	public static final int MEMORY_COLUMN = 4;
 	public static final int SSD_COLUMN = 5;
 	public static final int PRICE_COLUMN = 6;
-	public static final int SALES_COLUMN = 7;
-	public static final int REFUSALS_COLUMN = 8;
+	public static final int STOCK_COLUMN = 7;
+	public static final int SALES_COLUMN = 8;
+	public static final int REFUSALS_COLUMN = 9;
 	
 	@Override
 	public int getColumnCount() {
@@ -57,6 +58,9 @@ public class ComputerTableModel extends AbstractTableModel {
 			case SSD_COLUMN: {
 				return computer.getHasSSD();
 			}
+			case STOCK_COLUMN: {
+				return computer.getStock();
+			}
 			case PRICE_COLUMN: {
 				return computer.getPrice();
 			}
@@ -69,4 +73,29 @@ public class ComputerTableModel extends AbstractTableModel {
 		}	
 		return null;		
 	}
+	
+	public void addComputer(Computer computer) {
+		computers.add(computer);
+		fireTableDataChanged();
+	}
+	
+	public void incrementSalesAndDecreaseStockForComputer(final String cpuType, final int ramCapacity, final int memCapacity, final int price) {
+		Computer computer = Computer.findComputer(computers, cpuType, ramCapacity, memCapacity, price);
+		
+		if(computer != null) {
+			computer.incrementSalesAndDecreaseStock();
+			fireTableDataChanged();
+		}
+		
+	}
+	
+	public void incrementRefusalsForComputer(final String cpuType, final int ramCapacity, final int memCapacity, final int price) {
+		Computer computer = Computer.findComputer(computers, cpuType, ramCapacity, memCapacity, price);
+		
+		if(computer != null) {
+			computer.incrementRefusals();
+			fireTableDataChanged();
+		}
+	}
+	
 }
