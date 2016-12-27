@@ -2,10 +2,6 @@ package com.computershop;
 
 import java.util.Collection;
 
-import javax.print.DocFlavor.STRING;
-
-import FIPA.stringsHelper;
-
 public class Computer {
 
 	private String cpuType;
