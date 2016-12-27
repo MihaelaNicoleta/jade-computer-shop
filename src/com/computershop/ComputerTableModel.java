@@ -74,6 +74,11 @@ public class ComputerTableModel extends AbstractTableModel {
 		return null;		
 	}
 	
+	@Override
+	public String getColumnName(int column) {
+		return COLUMN_NAMES[column];
+	}
+	
 	public void addComputer(Computer computer) {
 		computers.add(computer);
 		fireTableDataChanged();
