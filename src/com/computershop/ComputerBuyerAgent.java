@@ -47,7 +47,7 @@ public class ComputerBuyerAgent extends Agent
 		
 		private MessageTemplate msgTempl;
 		
-		private Steps step = Steps.RequestAllSellerOffers;
+		Steps step = Steps.ReceviveSellACK;
 		
 		@Override
 		public void action() 
