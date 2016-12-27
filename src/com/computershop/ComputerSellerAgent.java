@@ -90,15 +90,15 @@ public class ComputerSellerAgent extends Agent {
 		int ramCapacity = Integer.parseInt(parts[1]);
 		int memCapacity = Integer.parseInt(parts[2]);
 		boolean hasSSD = false;
-		if(parts[3].equalsIgnoreCase("yes")) {
+		/*if(parts[3].equalsIgnoreCase("yes")) {
 			 hasSSD = true;
-		}
+		}*/
 		
-		int price = Integer.parseInt(parts[4]);
+		int price = Integer.parseInt(parts[3]);
 		
 		Computer computer = Computer.findComputer(computers, cpuType, ramCapacity, memCapacity, price);
 		/* create computer with received details*/
-		return computer;
+		return computer;//new Computer("intel", "amd", 4, 500, true, 10);
 		
 	}
 	

@@ -47,12 +47,12 @@ public class ComputerBuyerAgent extends Agent
 		
 		private MessageTemplate msgTempl;
 		
-		Steps step = Steps.ReceviveSellACK;
+		Steps step = Steps.RequestAllSellerOffers;
 		
 		@Override
 		public void action() 
 		{
-			String search = targetCpu + ":"+ targetRamCap +":"+ targetMemCap + ":" + maxPrice;
+			String search = targetCpu + ":" + targetRamCap + ":" + targetMemCap + ":" + maxPrice;
 			ACLMessage reply ;
 			
 			switch(this.step)
@@ -230,7 +230,7 @@ public class ComputerBuyerAgent extends Agent
 		});
 	}
 	
-	public void startCFP(String searchCpuType, int searchRamCap, int searchMemCap, int price)
+	public void startCFP(final String searchCpuType,final int searchRamCap,final int searchMemCap,final int price)
 	{
 		addBehaviour(new OneShotBehaviour() {
 			private static final long serialVersionUID = 1L;
@@ -240,6 +240,7 @@ public class ComputerBuyerAgent extends Agent
 				targetCpu = searchCpuType;
 				targetRamCap = searchRamCap;
 				targetMemCap = searchMemCap;
+				maxPrice = price;
 				accepted  = new HashMap<String, Boolean>();
 				proposalsList = new ArrayList<>();
 				priceList = new ArrayList<>();

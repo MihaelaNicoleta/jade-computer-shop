@@ -64,7 +64,7 @@ public class ComputerBuyerGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				searchButton.setEnabled(false);
+				//searchButton.setEnabled(false);
 				proposalsPanel.removeAll();
 				initProposals();
 				sellerNames.clear();
@@ -75,7 +75,8 @@ public class ComputerBuyerGUI extends JFrame{
 				buyerAgent.startCFP(cpuTxtF.getText(), 
 						Integer.parseInt(ramTxtF.getText()), 
 						Integer.parseInt(memTxtF.getText()),
-						Integer.parseInt( priceTxtF.getText()));
+						Integer.parseInt(priceTxtF.getText()));
+				
 			}
 		});
 		panel.add(searchButton);
@@ -86,6 +87,7 @@ public class ComputerBuyerGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				
 				buyButton.setEnabled(false);
 				Map<String, Boolean> accepted = new HashMap<>();
 				for(int i = 0; i< sellerNames.size(); i++)
