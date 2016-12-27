@@ -82,22 +82,23 @@ public class ComputerSellerAgent extends Agent {
 	}
 	
 	/* parse message to get computer details */
-	private Computer createComputerFromMessage(String message) {
+	private Computer getComputerFromMessage(String message) {
 		String parts[] = message.split(":");		
 		
 		String cpuType = parts[0];
-		String gpuType = parts[1];
-		int ramCapacity = Integer.parseInt(parts[2]);
-		int memCapacity = Integer.parseInt(parts[3]);
+		//String gpuType = parts[1];
+		int ramCapacity = Integer.parseInt(parts[1]);
+		int memCapacity = Integer.parseInt(parts[2]);
 		boolean hasSSD = false;
-		if(parts[4].equalsIgnoreCase("yes")) {
+		if(parts[3].equalsIgnoreCase("yes")) {
 			 hasSSD = true;
 		}
 		
-		int price = Integer.parseInt(parts[5]);
+		int price = Integer.parseInt(parts[4]);
 		
+		Computer computer = Computer.findComputer(computers, cpuType, ramCapacity, memCapacity, price);
 		/* create computer with received details*/
-		return new Computer(cpuType, gpuType, ramCapacity, memCapacity, hasSSD, price);
+		return computer;
 		
 	}
 	
@@ -114,7 +115,7 @@ public class ComputerSellerAgent extends Agent {
 			
 			if(aclMessage != null) {
 				String message = aclMessage.getContent();				
-				Computer computer = createComputerFromMessage(message);
+				Computer computer = getComputerFromMessage(message);
 				
 				/* create reply message */
 				ACLMessage replyMessage = aclMessage.createReply();
@@ -148,7 +149,7 @@ public class ComputerSellerAgent extends Agent {
 			
 			if(aclMessage != null) {
 				String message = aclMessage.getContent();
-				Computer computer = createComputerFromMessage(message);
+				Computer computer = getComputerFromMessage(message);
 				
 				if(computer != null) {
 					computer.incrementRefusals();
@@ -172,7 +173,7 @@ public class ComputerSellerAgent extends Agent {
 			
 			if(aclMessage != null) {
 				String message = aclMessage.getContent();
-				Computer computer = createComputerFromMessage(message);
+				Computer computer = getComputerFromMessage(message);
 				
 				ACLMessage replyMessage = aclMessage.createReply();
 				
