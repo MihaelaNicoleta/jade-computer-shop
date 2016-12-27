@@ -3,10 +3,15 @@ package com.computershop;
 import javax.swing.JFrame;
 
 public class ComputerSellerGUI extends JFrame{
-
+	private static final long serialVersionUID = 1L;
+	
+	private ComputerSellerAgent sellerAgent;
+	
 	
 	ComputerSellerGUI(ComputerSellerAgent sellerAgent) {
+		super(sellerAgent.getLocalName());
 		
+		this.sellerAgent = sellerAgent;
 	}
 	
 	public void show() { 
