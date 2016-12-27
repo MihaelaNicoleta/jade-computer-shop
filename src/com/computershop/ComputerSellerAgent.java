@@ -28,6 +28,7 @@ public class ComputerSellerAgent extends Agent {
 	private Map<AID, AtomicInteger> clients;
 	private ComputerSellerGUI sellerGUI;
 	
+	//private ComputerSellerAgent sellerAgent;
 	private ComputerSellerAgent sellerAgent;
 	
 	protected void setup() {
@@ -37,6 +38,8 @@ public class ComputerSellerAgent extends Agent {
 		sellerGUI = new ComputerSellerGUI(this);
 		sellerGUI.show();
 
+		sellerAgent = sellerGUI.sellerAgent;
+		
 		ServiceDescription serviceDescription = new ServiceDescription();
 		serviceDescription.setType(SERVICE_TYPE);
 		serviceDescription.setName(SERVICE_NAME);		
@@ -69,6 +72,7 @@ public class ComputerSellerAgent extends Agent {
 	
 	public void addComputer(final Computer computer) {
 		addBehaviour(new OneShotBehaviour() {
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void action() {				

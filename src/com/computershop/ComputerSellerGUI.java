@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 public class ComputerSellerGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
-	private ComputerSellerAgent sellerAgent;
+	public ComputerSellerAgent sellerAgent;
 	private ComputerTableModel computerTableModel;
 	
 	private JTextField cpuField, gpuField, ramField, memoryField, ssdField, stockField, priceField;
@@ -71,7 +71,7 @@ public class ComputerSellerGUI extends JFrame{
 		
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		jPanel.add(new JLabel("Memmory:"), gbc);
+		jPanel.add(new JLabel("Memory:"), gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 3;
