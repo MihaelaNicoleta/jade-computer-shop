@@ -168,26 +168,30 @@ public class ComputerBuyerGUI extends JFrame{
 			@Override
 			public void run() 
 			{
-				sellerNames.add(name);
-				sellerPrices.add(Integer.parseInt(content[5]));
-				JCheckBox checkBox = new JCheckBox();
-				sellerChxBx.add(checkBox);
-				proposalsPanel.add(checkBox);
-				
-				proposalsPanel.add(new JLabel(name));
-				proposalsPanel.add(new JLabel(content[5]));
-				
-				proposalsPanel.add(new JLabel(content[0]));
-				proposalsPanel.add(new JLabel(content[1]));
-				proposalsPanel.add(new JLabel(content[2]));
-				proposalsPanel.add(new JLabel(content[3]));
-				proposalsPanel.add(new JLabel(content[4]));
-				proposalsPanel.add(new JLabel(content[6]));
-				
-				
-				JLabel label = new JLabel();
-				sellerLabels.add(label);
-				proposalsPanel.add(label);
+				int size = content.length;
+				for(int i = 0; i < size; i +=7 )
+				{
+					sellerNames.add(name);
+					sellerPrices.add(Integer.parseInt(content[i+5]));
+					JCheckBox checkBox = new JCheckBox();
+					sellerChxBx.add(checkBox);
+					proposalsPanel.add(checkBox);
+					
+					proposalsPanel.add(new JLabel(name));
+					proposalsPanel.add(new JLabel(content[i+5]));
+					
+					proposalsPanel.add(new JLabel(content[i+0]));
+					proposalsPanel.add(new JLabel(content[i+1]));
+					proposalsPanel.add(new JLabel(content[i+2]));
+					proposalsPanel.add(new JLabel(content[i+3]));
+					proposalsPanel.add(new JLabel(content[i+4]));
+					proposalsPanel.add(new JLabel(content[i+6]));
+					
+					
+					JLabel label = new JLabel();
+					sellerLabels.add(label);
+					proposalsPanel.add(label);
+				}
 				pack();
 			}
 		});

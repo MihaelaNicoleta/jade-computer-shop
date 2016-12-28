@@ -108,14 +108,22 @@ public class ComputerSellerAgent extends Agent {
 			
 			if(aclMessage != null) {
 				String message = aclMessage.getContent();				
-				Computer computer = getComputerFromMessage(message);
+				//Computer computer = getComputerFromMessage(message);
+				String parts[] = message.split(":");		
+				
+				String cpuType = parts[0];
+				int ramCapacity = Integer.parseInt(parts[1]);
+				int memCapacity = Integer.parseInt(parts[2]);		
+				int price = Integer.parseInt(parts[3]);
+				
+				String computer = Computer.findComputers(computers, cpuType, ramCapacity, memCapacity, price);
 				
 				/* create reply message */
 				ACLMessage replyMessage = aclMessage.createReply();
 				
 				if(computer != null) {
 					replyMessage.setPerformative(ACLMessage.PROPOSE);
-					replyMessage.setContent(computer.toString());
+					replyMessage.setContent(computer);
 				}
 				else {
 					replyMessage.setPerformative(ACLMessage.REFUSE);

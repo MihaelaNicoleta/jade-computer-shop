@@ -1,5 +1,7 @@
 package com.computershop;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Computer {
@@ -100,8 +102,9 @@ public class Computer {
 		this.refusals = 0;
 	}
 	
-	public static Computer findComputer(Collection<Computer> computers, String cpuType, int ramCapacity, int memCapacity, int price) {
-		
+	public static Computer findComputer(Collection<Computer> computers, String cpuType, int ramCapacity, int memCapacity, int price)
+	{
+		//String results = "";
 		for(Computer pc : computers)
 		{
 			if(pc.stock > 0)
@@ -111,12 +114,34 @@ public class Computer {
 				   pc.memCapacity >= memCapacity &&
 				   pc.price <= price)
 				{
+					//results += pc.toString() + ":";
 					return pc;
 				}
 			}
 		}
 		
 		return null;
+	}
+	
+	public static String findComputers(Collection<Computer> computers, String cpuType, int ramCapacity, int memCapacity, int price)
+	{
+		String results = "";
+		for(Computer pc : computers)
+		{
+			if(pc.stock > 0)
+			{
+				if(pc.cpuType.equalsIgnoreCase(cpuType) && 
+				   pc.ramCapacity >= ramCapacity &&
+				   pc.memCapacity >= memCapacity &&
+				   pc.price <= price)
+				{
+					results += pc.toString() + ":";
+					//return pc;
+				}
+			}
+		}
+		
+		return results;
 	}
 	
 	public String toString()
