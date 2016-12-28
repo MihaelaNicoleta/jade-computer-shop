@@ -23,10 +23,10 @@ import java.awt.GridBagLayout;
 
 public class ComputerBuyerGUI extends JFrame{
 
-	private static final long serailVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private ComputerBuyerAgent buyerAgent;
-	private List<String> sellerNames = new ArrayList();
+	private List<String> sellerNames = new ArrayList<>();
 	private List<Integer> sellerPrices =  new ArrayList<>();
 	private List<JCheckBox> sellerChxBx = new ArrayList<>();
 	private List<JLabel> sellerLabels = new ArrayList<>();
@@ -101,7 +101,7 @@ public class ComputerBuyerGUI extends JFrame{
 		panel.add(buyButton);
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
-		proposalsPanel = new JPanel(new GridLayout(0, 9));
+		proposalsPanel = new JPanel(new GridLayout(0, 10));
 		initProposals();
 		getContentPane().add(proposalsPanel, BorderLayout.CENTER);
 		
@@ -157,6 +157,7 @@ public class ComputerBuyerGUI extends JFrame{
 		proposalsPanel.add(new JLabel("RAM Cap"));
 		proposalsPanel.add(new JLabel("Memory cap"));
 		proposalsPanel.add(new JLabel("SSD"));		
+		proposalsPanel.add(new JLabel("Stock"));
 		proposalsPanel.add(new JLabel("Result info"));		
 	}
 
