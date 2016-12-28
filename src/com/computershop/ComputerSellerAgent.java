@@ -86,19 +86,12 @@ public class ComputerSellerAgent extends Agent {
 		String parts[] = message.split(":");		
 		
 		String cpuType = parts[0];
-		//String gpuType = parts[1];
 		int ramCapacity = Integer.parseInt(parts[1]);
-		int memCapacity = Integer.parseInt(parts[2]);
-		boolean hasSSD = false;
-		/*if(parts[3].equalsIgnoreCase("yes")) {
-			 hasSSD = true;
-		}*/
-		
+		int memCapacity = Integer.parseInt(parts[2]);		
 		int price = Integer.parseInt(parts[3]);
 		
 		Computer computer = Computer.findComputer(computers, cpuType, ramCapacity, memCapacity, price);
-		/* create computer with received details*/
-		return computer;//new Computer("intel", "amd", 4, 500, true, 10);
+		return computer;
 		
 	}
 	
@@ -152,7 +145,7 @@ public class ComputerSellerAgent extends Agent {
 				Computer computer = getComputerFromMessage(message);
 				
 				if(computer != null) {
-					computer.incrementRefusals();
+					//computer.incrementRefusals();
 					sellerGUI.incrementRefusalsForComputer(computer.getCpuType(), computer.getRamCapacity(), computer.getMemCapacity(), computer.getPrice());
 				}
 			}
@@ -188,7 +181,7 @@ public class ComputerSellerAgent extends Agent {
 					}
 					
 					/* increment sales */
-					computer.incrementSalesAndDecreaseStock();
+					//computer.incrementSalesAndDecreaseStock();
 					sellerGUI.incrementSalesAndDecreaseStockForComputer(computer.getCpuType(), computer.getRamCapacity(), computer.getMemCapacity(), computer.getPrice());
 					
 					replyMessage.setPerformative(ACLMessage.INFORM);
