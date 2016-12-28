@@ -92,8 +92,7 @@ public class ComputerBuyerGUI extends JFrame{
 				Map<String, Boolean> accepted = new HashMap<>();
 				for(int i = 0; i< sellerNames.size(); i++)
 				{
-					accepted.put(sellerNames.get(i), 
-							sellerChxBx.get(i).isSelected());
+					accepted.put(sellerNames.get(i), sellerChxBx.get(i).isSelected());
 				}
 				buyerAgent.finish(accepted);
 			}
@@ -102,7 +101,7 @@ public class ComputerBuyerGUI extends JFrame{
 		panel.add(buyButton);
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
-		proposalsPanel = new JPanel(new GridLayout(0, 4));
+		proposalsPanel = new JPanel(new GridLayout(0, 9));
 		initProposals();
 		getContentPane().add(proposalsPanel, BorderLayout.CENTER);
 		
@@ -150,14 +149,18 @@ public class ComputerBuyerGUI extends JFrame{
 	
 	private void initProposals() 
 	{
-		proposalsPanel.add(new JLabel("Seller Name"));
-		proposalsPanel.add(new JLabel("Seller Price"));
-		proposalsPanel.add(new JLabel("Seller Add to Cart"));
-		proposalsPanel.add(new JLabel("Result info"));
-		
+		proposalsPanel.add(new JLabel("Add to Cart"));
+		proposalsPanel.add(new JLabel("Seller"));
+		proposalsPanel.add(new JLabel("Price"));
+		proposalsPanel.add(new JLabel("CPU type"));
+		proposalsPanel.add(new JLabel("GPU type"));
+		proposalsPanel.add(new JLabel("RAM Cap"));
+		proposalsPanel.add(new JLabel("Memory cap"));
+		proposalsPanel.add(new JLabel("SSD"));		
+		proposalsPanel.add(new JLabel("Result info"));		
 	}
 
-	public void addProposal(String name, int price) 
+	public void addProposal(String name, String[] content) 
 	{
 		EventQueue.invokeLater(new Runnable() 
 		{
@@ -165,12 +168,22 @@ public class ComputerBuyerGUI extends JFrame{
 			public void run() 
 			{
 				sellerNames.add(name);
-				sellerPrices.add(price);
-				proposalsPanel.add(new JLabel(name));
-				proposalsPanel.add(new JLabel(Integer.toString(price)));
+				sellerPrices.add(Integer.parseInt(content[5]));
 				JCheckBox checkBox = new JCheckBox();
 				sellerChxBx.add(checkBox);
 				proposalsPanel.add(checkBox);
+				
+				proposalsPanel.add(new JLabel(name));
+				proposalsPanel.add(new JLabel(content[5]));
+				
+				proposalsPanel.add(new JLabel(content[0]));
+				proposalsPanel.add(new JLabel(content[1]));
+				proposalsPanel.add(new JLabel(content[2]));
+				proposalsPanel.add(new JLabel(content[3]));
+				proposalsPanel.add(new JLabel(content[4]));
+				proposalsPanel.add(new JLabel(content[6]));
+				
+				
 				JLabel label = new JLabel();
 				sellerLabels.add(label);
 				proposalsPanel.add(label);

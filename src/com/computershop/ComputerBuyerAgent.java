@@ -2,6 +2,7 @@ package com.computershop;
 
 import java.util.*;
 
+import FIPA.stringsHelper;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
@@ -84,10 +85,12 @@ public class ComputerBuyerAgent extends Agent
 					{
 						 if(reply.getPerformative() == ACLMessage.PROPOSE)
 						 {
-							 int price = Integer.parseInt(reply.getContent());
+							 String[] msgContent = reply.getContent().split(":");
+							 
+							 int price = Integer.parseInt(msgContent[5]);
 							 proposalsList.add(reply.getSender());
 							 priceList.add(price);
-							 buyerGUI.addProposal(reply.getSender().getLocalName(), price);
+							 buyerGUI.addProposal(reply.getSender().getLocalName(), msgContent );
 						 }
 						 repliesCount++;
 						 if(repliesCount >= sellerAgents.length)
@@ -128,6 +131,7 @@ public class ComputerBuyerAgent extends Agent
 							accept = true;
 							acceptanceCount++;
 							System.out.println("Accepted: " + acceptanceCount + " proposal(s)");
+							accepted.remove(aid.getLocalName());
 						}
 						else
 						{
@@ -140,14 +144,15 @@ public class ComputerBuyerAgent extends Agent
 					orderAccept.setConversationId(CONV_TRADE_ID);
 					orderAccept.setReplyWith("order" + System.currentTimeMillis());
 					
+					orderReject.setContent(search);
+					orderReject.setConversationId(CONV_TRADE_ID);
+					orderReject.setReplyWith("order" + System.currentTimeMillis());
+					
 					if(accept)
 					{
 						thisAgent.send(orderAccept);
 					}else if(reject) 
 					{
-						orderReject.setContent(search);
-						orderReject.setConversationId(CONV_TRADE_ID);
-						orderReject.setReplyWith("order" + System.currentTimeMillis());
 						thisAgent.send(orderReject);
 					}else {
 						step = Steps.Done;
@@ -156,7 +161,7 @@ public class ComputerBuyerAgent extends Agent
 					msgTempl = MessageTemplate.and(
 							MessageTemplate.MatchConversationId(CONV_TRADE_ID), 
 							MessageTemplate.MatchInReplyTo(orderAccept.getReplyWith()));
-					
+					step = Steps.ReceviveSellACK;
 				}					
 				break; //end of RequestToBuy
 				
@@ -215,8 +220,9 @@ public class ComputerBuyerAgent extends Agent
 	
 	public void finish(final Map<String, Boolean> acceptMap)
 	{
-		System.out.println("finish");
-		
+		/*System.out.println("finised");
+		thisAgent.accepted = acceptMap;
+		finished = true;*/
 		addBehaviour(new OneShotBehaviour() {
 			
 			private static final long serialVersionUID = 1L;
@@ -258,7 +264,7 @@ public class ComputerBuyerAgent extends Agent
 						sellerAgents[i] = result[i].getName();
 					}
 				}catch (FIPAException e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 				thisAgent.addBehaviour(new RequestPerformer());
 			}

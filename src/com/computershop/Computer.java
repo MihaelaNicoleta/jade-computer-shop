@@ -118,4 +118,10 @@ public class Computer {
 		
 		return null;
 	}
+	
+	public String toString()
+	{
+		return this.cpuType + ":" + this.gpuType + ":" + ramCapacity + ":" + 
+				this.memCapacity + ":" + this.hasSSD + ":" + this.price + ":" + this.stock;
+	}
 }
