@@ -11,7 +11,7 @@ public class ComputerTableModel extends AbstractTableModel {
 	private List<Computer> computers = new ArrayList<Computer>();
 	
 	public static final String[] COLUMN_NAMES = {
-			"No", "CPU Type", "GPU Type", "RAM Capacity", "Memory Capacity", "Has SSD?", "Price"};
+			"No", "CPU Type", "GPU Type", "RAM Capacity", "Memory Capacity", "Has SSD?", "Stock", "Price"};
 
 	public static final int COLUMN_COUNT = COLUMN_NAMES.length;
 	public static final int NO_COLUMN = 0;
@@ -20,8 +20,8 @@ public class ComputerTableModel extends AbstractTableModel {
 	public static final int RAM_COLUMN = 3;
 	public static final int MEMORY_COLUMN = 4;
 	public static final int SSD_COLUMN = 5;
-	public static final int PRICE_COLUMN = 6;
-	public static final int STOCK_COLUMN = 7;
+	public static final int STOCK_COLUMN = 6;
+	public static final int PRICE_COLUMN = 7;
 	public static final int SALES_COLUMN = 8;
 	public static final int REFUSALS_COLUMN = 9;
 	
