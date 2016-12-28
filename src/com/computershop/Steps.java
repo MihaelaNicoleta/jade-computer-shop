@@ -6,5 +6,4 @@ public enum Steps {
 	RequestToBuy ,			//2
 	ReceviveSellACK, 		//3
 	Done					//4
-	
 }
