@@ -238,11 +238,13 @@ public class ComputerBuyerAgent extends Agent
 	
 	public void startCFP(final String searchCpuType,final int searchRamCap,final int searchMemCap,final int price)
 	{
-		addBehaviour(new OneShotBehaviour() {
+		addBehaviour(new OneShotBehaviour() 
+		{
 			private static final long serialVersionUID = 1L;
 			
 			@Override
-			public void action() {
+			public void action() 
+			{
 				targetCpu = searchCpuType;
 				targetRamCap = searchRamCap;
 				targetMemCap = searchMemCap;
