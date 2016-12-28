@@ -115,7 +115,7 @@ public class ComputerSellerAgent extends Agent {
 				
 				if(computer != null) {
 					replyMessage.setPerformative(ACLMessage.PROPOSE);
-					replyMessage.setContent(String.valueOf(computer.getPrice()));
+					replyMessage.setContent(computer.toString());
 				}
 				else {
 					replyMessage.setPerformative(ACLMessage.REFUSE);
